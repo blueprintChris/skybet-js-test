@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaFutbol, FaBasketballBall, FaLemon, FaTableTennis } from 'react-icons/fa';
+import { FaHome, FaFutbol } from 'react-icons/fa';
 import { LinkText, StyledLink, StyledSidebar } from './styles';
 
 const Sidebar = () => {
@@ -10,15 +10,6 @@ const Sidebar = () => {
       </StyledLink>
       <StyledLink to='/football'>
         <FaFutbol /> <LinkText>Football</LinkText>
-      </StyledLink>
-      <StyledLink to='/netball'>
-        <FaBasketballBall /> <LinkText>Netball</LinkText>
-      </StyledLink>
-      <StyledLink to='/rugby'>
-        <FaLemon /> <LinkText>Rugby</LinkText>
-      </StyledLink>
-      <StyledLink to='/table-tennis'>
-        <FaTableTennis /> <LinkText>Table Tennis</LinkText>
       </StyledLink>
     </StyledSidebar>
   );

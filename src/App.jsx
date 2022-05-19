@@ -4,8 +4,6 @@ import Routes from './routes';
 import { ContentWrapper, StyledApp } from './styles';
 
 function App() {
-  // const { data, error } = useWebSocket('getLiveEvents', { primaryMarkets: true });
-
   return (
     <SocketProvider>
       <StyledApp>

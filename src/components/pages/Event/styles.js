@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledEvent = styled.div`
@@ -17,29 +16,6 @@ export const StyledHeader = styled.h1`
 `;
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   padding: 2rem;
   height: 100%;
-  overflow-y: auto;
-`;
-
-export const EventWrapper = styled(NavLink)`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2rem;
-  box-sizing: border-box;
-  background-color: white;
-  text-decoration: none;
-  font-weight: 600;
-  color: black;
-  width: 100%;
-  font-family: 'Roboto', 'sans-serif';
-  border-bottom: 1px solid grey;
-  cursor: pointer;
-`;
-
-export const EventText = styled.span`
-  margin-right: 2rem;
 `;
