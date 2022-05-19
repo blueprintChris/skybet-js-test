@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useWebSocket from '../../hooks/useWebSocket';
-import Types from '../../static/types';
+import { MessageTypes } from '../../static/types';
 import { Market, StyledMarkets } from './styles';
 
 const Markets = ({ marketId }) => {
-  const [marketData, setMarketData] = useState({});
-  const { data, socket } = useWebSocket();
-
-  console.log(marketId);
-  useEffect(() => {
-    socket.send(JSON.stringify({ type: 'getMarket', id: marketId }));
-  }, [marketId, socket]);
+  const { markets, socketSend } = useWebSocket();
 
   useEffect(() => {
-    if (data.type === Types.MARKET_DATA) {
-      setMarketData(data);
-    }
-  }, [data]);
+    socketSend({ type: MessageTypes.GET_MARKET, id: marketId });
+  }, [marketId, socketSend]);
+
+  useEffect(() => {
+    console.log(markets);
+  }, [markets]);
 
   return (
-    marketData && (
+    markets && (
       <StyledMarkets>
         <Market>Win</Market>
         <Market>Draw</Market>

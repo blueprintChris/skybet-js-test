@@ -1,29 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useCurrentPathname from '../../../hooks/useCurrentPath';
 import useWebSocket from '../../../hooks/useWebSocket';
 import { Accordion } from '../..';
 import { Container, StyledHeader, StyledEvent } from './styles';
-import Types from '../../../static/types';
+import { MessageTypes } from '../../../static/types';
 
 const Event = () => {
-  const [eventData, setEventData] = useState({});
   const { name } = useCurrentPathname();
-  const { data, socket } = useWebSocket();
+  const { events, socketSend } = useWebSocket();
 
   useEffect(() => {
-    socket.send(JSON.stringify({ type: 'getLiveEvents', primaryMarkets: true }));
-  }, [socket]);
-
-  useEffect(() => {
-    if (data.type === Types.LIVE_EVENTS_DATA) {
-      setEventData(data);
-    }
-  }, [data]);
+    socketSend({ type: MessageTypes.GET_LIVE_EVENTS, primaryMarkets: true });
+  }, [socketSend]);
 
   return (
     <StyledEvent>
       <StyledHeader>{name}</StyledHeader>
-      <Container>{eventData && eventData.data && eventData.data.length > 0 && <Accordion data={eventData.data} />}</Container>
+      <Container>{events && events.data && events.data.length > 0 && <Accordion data={events.data} />}</Container>
     </StyledEvent>
   );
 };
