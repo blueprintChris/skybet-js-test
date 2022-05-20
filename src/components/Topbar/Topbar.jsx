@@ -14,7 +14,7 @@ const Topbar = () => {
   return (
     <StyledTopbar>
       <Logo src='/images/sky-bet-logo-svg.svg' alt='Sky Bet Logo' />
-      <ToggleSwitch onChange={toggleOdds} onLabel='Fractional odds: OFF' offLabel='Fractional odds: ON' />
+      <ToggleSwitch onChange={toggleOdds} onLabel='Decimal odds: ON' offLabel='Decimal odds: OFF' />
     </StyledTopbar>
   );
 };
