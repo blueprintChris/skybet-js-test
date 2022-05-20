@@ -7,7 +7,7 @@ import { StyledOutcome } from './styles';
 const Outcome = ({ id }) => {
   const { socketSend } = useWebSocket();
   const { state } = useContext(StoreContext);
-  const { outcomes } = state;
+  const { outcomes, isDecimalOdds } = state;
 
   useEffect(() => {
     socketSend({ type: MessageTypes.GET_OUTCOME, id });
@@ -19,7 +19,7 @@ const Outcome = ({ id }) => {
         <span>{outcomes[id].name}</span>
         <span>&nbsp;-&nbsp;</span>
         <span>
-          <strong>{parseFloat(outcomes[id].price.decimal).toFixed(2)}</strong>
+          <strong> {isDecimalOdds ? parseFloat(outcomes[id].price.decimal).toFixed(2) : `${outcomes[id].price.num} / ${outcomes[id].price.den}`}</strong>
         </span>
       </StyledOutcome>
     )

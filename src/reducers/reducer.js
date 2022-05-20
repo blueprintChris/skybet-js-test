@@ -20,6 +20,12 @@ const reducer = (state, action) => {
         outcomes: { ...state.outcomes, ...action.payload },
       };
 
+    case Actions.TOGGLE_ODDS:
+      return {
+        ...state,
+        isDecimalOdds: !state.isDecimalOdds,
+      };
+
     case Actions.ERROR:
       return {
         ...state,

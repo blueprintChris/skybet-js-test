@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledTopbar = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 6rem;

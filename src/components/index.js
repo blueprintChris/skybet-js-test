@@ -4,4 +4,5 @@ export { default as Home } from './pages/Home/Home';
 export { default as Markets } from './Markets/Markets';
 export { default as Outcomes } from './Outcomes/Outcomes';
 export { default as Sidebar } from './Sidebar/Sidebar';
+export { default as ToggleSwitch } from './ToggleSwitch/ToggleSwitch';
 export { default as Topbar } from './Topbar/Topbar';
