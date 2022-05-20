@@ -14,6 +14,12 @@ const reducer = (state, action) => {
         markets: { ...state.markets, ...action.payload },
       };
 
+    case Actions.OUTCOME_DATA:
+      return {
+        ...state,
+        outcomes: { ...state.outcomes, ...action.payload },
+      };
+
     case Actions.ERROR:
       return {
         ...state,

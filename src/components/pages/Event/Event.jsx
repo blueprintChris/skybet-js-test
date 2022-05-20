@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import useCurrentPathname from '../../../hooks/useCurrentPath';
 import useWebSocket from '../../../hooks/useWebSocket';
 import { Accordion } from '../..';
 import { Container, StyledHeader, StyledEvent } from './styles';
 import { MessageTypes } from '../../../static/types';
+import { StoreContext } from '../../../context/StoreContext';
 
 const Event = () => {
   const { name } = useCurrentPathname();
-  const { events, socketSend } = useWebSocket();
+  const { socketSend } = useWebSocket();
+  const { state } = useContext(StoreContext);
+  const { events } = state;
 
   useEffect(() => {
     socketSend({ type: MessageTypes.GET_LIVE_EVENTS, primaryMarkets: true });

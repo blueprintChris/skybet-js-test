@@ -4,7 +4,7 @@ const ws = new WebSocket('ws://localhost:8889');
 
 export const SocketContext = createContext(ws);
 
-export const SocketProvider = props => {
+export const SocketProvider = ({ children }) => {
   const [webSocket, setWebSocket] = useState(ws);
 
   useEffect(() => {
@@ -21,5 +21,5 @@ export const SocketProvider = props => {
     };
   }, [webSocket]);
 
-  return <SocketContext.Provider value={ws}>{props.children}</SocketContext.Provider>;
+  return <SocketContext.Provider value={ws}>{children}</SocketContext.Provider>;
 };

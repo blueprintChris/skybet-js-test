@@ -24,3 +24,7 @@ export const EventLink = styled(NavLink)`
     text-decoration: underline;
   }
 `;
+
+export const EventTime = styled.span`
+  margin-right: 2rem;
+`;

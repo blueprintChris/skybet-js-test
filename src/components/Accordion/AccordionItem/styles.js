@@ -6,13 +6,21 @@ export const AccordionHeader = styled.div`
   align-items: center;
   height: 5rem;
   width: 100%;
-  padding: 0 2rem;
   box-sizing: border-box;
   background-color: white;
   text-decoration: none;
   font-weight: 600;
+  padding: 0 1rem;
   color: black;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgba(41, 73, 153, 0.2);
+  }
+`;
+
+export const AccordionText = styled.div`
+  display: flex;
 `;
 
 export const AccordionContent = styled.div`
