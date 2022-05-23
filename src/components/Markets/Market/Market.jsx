@@ -17,7 +17,7 @@ const Market = ({ id }) => {
   return (
     markets[id] && (
       <>
-        <StyledMarket>{markets[id].name}</StyledMarket>
+        <StyledMarket>Primary Market: {markets[id].name}</StyledMarket>
         <Outcomes outcomes={markets[id].outcomes} />
       </>
     )

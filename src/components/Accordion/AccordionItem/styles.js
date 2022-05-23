@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const StyledAccordionItem = styled.div`
+  margin-bottom: 1rem;
+  border-radius: 5px;
+`;
+
 export const AccordionHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -13,10 +18,12 @@ export const AccordionHeader = styled.div`
   padding: 0 2rem;
   color: black;
   cursor: pointer;
-  background: ${props => (props.isOpen ? 'linear-gradient(90deg, rgba(41, 73, 153, 0.3) 0%, rgba(255, 255, 255, 0) 100%)' : '')};
+  border-radius: ${props => (props.isOpen ? '5px 5px 0 0' : '5px')};
+  background: ${props => (props.isOpen ? '#132C6C' : '#E0E8F3')};
+  color: ${props => (props.isOpen ? 'white' : 'black')};
 
-  &:hover {
-    background-color: rgba(41, 73, 153, 0.2);
+  a {
+    color: ${props => (props.isOpen ? 'white' : '#294999')};
   }
 `;
 
@@ -28,6 +35,7 @@ export const AccordionContent = styled.div`
   height: ${({ isOpen, contentHeight }) => (isOpen ? contentHeight : '0')};
   overflow: hidden;
   transition: height 0.4s ease-in-out;
+  border-radius: 0 0 5px 5px;
 `;
 
 export const RotatingChevron = styled.span`

@@ -9,8 +9,12 @@ export const StyledOutcome = styled.tr`
 `;
 
 export const TableData = styled.td`
-  padding: 0.8rem;
-  border: 1px solid rgb(190, 190, 190);
-  text-align: center;
-  font-weight: 600;
+  padding: 1rem;
+  font-size: 1.2rem;
+
+  &:last-child {
+    text-align: center;
+    font-weight: 600;
+    color: red;
+  }
 `;

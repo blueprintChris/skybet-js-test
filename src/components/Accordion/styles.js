@@ -20,6 +20,10 @@ export const EventLink = styled(NavLink)`
   color: #294999;
   height: 100%;
 
+  span {
+    margin-right: 2rem;
+  }
+
   &:hover {
     text-decoration: underline;
   }

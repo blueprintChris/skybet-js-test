@@ -14,6 +14,7 @@ const ToggleSwitch = ({ onChange, onLabel, offLabel }) => {
     onChange();
     setChecked(isChecked);
   };
+
   return (
     <Wrapper>
       <Label>{isDecimalOdds ? onLabel : offLabel}</Label>

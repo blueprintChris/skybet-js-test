@@ -20,6 +20,12 @@ const reducer = (state, action) => {
         outcomes: { ...state.outcomes, ...action.payload },
       };
 
+    case Actions.EVENT_DATA:
+      return {
+        ...state,
+        selectedEvent: action.payload,
+      };
+
     case Actions.TOGGLE_ODDS:
       return {
         ...state,

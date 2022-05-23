@@ -2,8 +2,8 @@
 
 ## Setup
 
-Install Docker and NodeJS and ensure they are both running on your machine
+Install Docker and NodeJS (and optionally, Yarn) and ensure they are all running on your machine.
 
-1. run `yarn`
+1. run `yarn` (or `npm install`)
 2. run `docker-compose up -d`
-3. run `yarn start`
+3. run `yarn start` (or `npm start`)
