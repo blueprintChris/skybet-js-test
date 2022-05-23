@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
+import { ToggleSwitch } from '..';
 import Actions from '../../static/actions';
-import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import { Logo, StyledTopbar } from './styles';
 
 const Topbar = () => {

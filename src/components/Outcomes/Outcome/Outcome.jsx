@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { StoreContext } from '../../../context/StoreContext';
-import useWebSocket from '../../../hooks/useWebSocket';
+import { useWebSocket } from '../../../hooks';
 import { MessageTypes } from '../../../static/types';
 import { StyledOutcome, TableData } from './styles';
 

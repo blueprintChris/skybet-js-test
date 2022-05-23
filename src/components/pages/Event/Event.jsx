@@ -1,19 +1,15 @@
 import React, { useContext, useEffect } from 'react';
-import useCurrentPathname from '../../../hooks/useCurrentPath';
-import useWebSocket from '../../../hooks/useWebSocket';
-import { Accordion } from '../..';
-import { Container, StyledHeader, StyledEvent } from './styles';
-import { MessageTypes } from '../../../static/types';
-import { StoreContext } from '../../../context/StoreContext';
-import Markets from '../../Markets/Markets';
-import Market from '../../Markets/Market/Market';
-import AccordionItem from '../../Accordion/AccordionItem/AccordionItem';
-import { showFriendlyTime } from '../../../helpers/dateTimeHelper';
 import { useLocation } from 'react-router-dom';
+import { StoreContext } from '../../../context/StoreContext';
+import { useCurrentPath, useWebSocket } from '../../../hooks';
+import { Accordion, AccordionItem, Markets } from '../..';
+import { showFriendlyTime } from '../../../helpers/dateTimeHelper';
+import { MessageTypes } from '../../../static/types';
+import { Container, StyledHeader, StyledEvent } from './styles';
 
 const Event = () => {
   const { pathname } = useLocation();
-  const { name } = useCurrentPathname();
+  const { name } = useCurrentPath();
   const { socketSend } = useWebSocket();
   const { state } = useContext(StoreContext);
   const { events } = state;

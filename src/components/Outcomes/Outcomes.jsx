@@ -1,5 +1,5 @@
 import React from 'react';
-import Outcome from './Outcome/Outcome';
+import { Outcome } from '..';
 import { StyledOutcomes, StyledTable, TableBody } from './styles';
 
 const Outcomes = ({ outcomes }) => {

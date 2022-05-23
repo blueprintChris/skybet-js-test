@@ -1,16 +1,11 @@
-import React from 'react';
-import { useContext } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { StoreContext } from '../../../context/StoreContext';
 import { showFriendlyTime } from '../../../helpers/dateTimeHelper';
-import useWebSocket from '../../../hooks/useWebSocket';
+import { useWebSocket } from '../../../hooks';
 import { MessageTypes } from '../../../static/types';
-import Accordion from '../../Accordion/Accordion';
-import AccordionItem from '../../Accordion/AccordionItem/AccordionItem';
-import Outcomes from '../../Outcomes/Outcomes';
+import { Accordion, AccordionItem, Outcomes } from '../..';
 import { Container } from '../Event/styles';
-
 import { StyledEventDetails, EventHeader, EventType } from './styles';
 
 const EventDetails = () => {
