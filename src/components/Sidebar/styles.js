@@ -23,6 +23,11 @@ export const StyledLink = styled(NavLink)`
     background-color: white;
     color: #132c6c;
   }
+
+  &[aria-current] {
+    background-color: white;
+    color: #132c6c;
+  }
 `;
 
 export const LinkText = styled.span`

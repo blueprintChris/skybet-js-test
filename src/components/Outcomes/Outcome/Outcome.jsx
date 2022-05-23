@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { StoreContext } from '../../../context/StoreContext';
 import useWebSocket from '../../../hooks/useWebSocket';
 import { MessageTypes } from '../../../static/types';
-import { StyledOutcome } from './styles';
+import { StyledOutcome, TableData } from './styles';
 
 const Outcome = ({ id }) => {
   const { socketSend } = useWebSocket();
@@ -16,11 +16,14 @@ const Outcome = ({ id }) => {
   return (
     outcomes[id] && (
       <StyledOutcome>
-        <span>{outcomes[id].name}</span>
-        <span>&nbsp;-&nbsp;</span>
-        <span>
-          <strong> {isDecimalOdds ? parseFloat(outcomes[id].price.decimal).toFixed(2) : `${outcomes[id].price.num} / ${outcomes[id].price.den}`}</strong>
-        </span>
+        <TableData>
+          <span>{outcomes[id].name}</span>
+        </TableData>
+        <TableData>
+          <span>
+            <strong>{isDecimalOdds ? parseFloat(outcomes[id].price.decimal).toFixed(2) : `${outcomes[id].price.num} / ${outcomes[id].price.den}`}</strong>
+          </span>
+        </TableData>
       </StyledOutcome>
     )
   );

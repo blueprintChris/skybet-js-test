@@ -14,7 +14,7 @@ const AccordionItem = ({ item, children, markets }) => {
 
   return (
     <>
-      <AccordionHeader key={item.eventId} onClick={() => setIsOpen(!isOpen)}>
+      <AccordionHeader key={item.eventId} onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <AccordionText>{children}</AccordionText>
         <RotatingChevron isActive={isOpen}>
           <FaAngleDoubleDown />

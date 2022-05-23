@@ -4,6 +4,7 @@ export const StyledEvent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 export const StyledHeader = styled.h1`
@@ -16,6 +17,5 @@ export const StyledHeader = styled.h1`
 `;
 
 export const Container = styled.div`
-  padding: 2rem;
   height: 100%;
 `;

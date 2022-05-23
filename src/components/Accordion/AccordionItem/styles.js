@@ -10,9 +10,10 @@ export const AccordionHeader = styled.div`
   background-color: white;
   text-decoration: none;
   font-weight: 600;
-  padding: 0 1rem;
+  padding: 0 2rem;
   color: black;
   cursor: pointer;
+  background: ${props => (props.isOpen ? 'linear-gradient(90deg, rgba(41, 73, 153, 0.3) 0%, rgba(255, 255, 255, 0) 100%)' : '')};
 
   &:hover {
     background-color: rgba(41, 73, 153, 0.2);

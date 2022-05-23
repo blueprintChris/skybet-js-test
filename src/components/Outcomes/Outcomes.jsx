@@ -1,13 +1,23 @@
 import React from 'react';
 import Outcome from './Outcome/Outcome';
-import { StyledOutcomes } from './styles';
+import { StyledOutcomes, StyledTable, TableBody, TableHead, TableHeader, TableRow } from './styles';
 
 const Outcomes = ({ outcomes }) => {
   return (
     <StyledOutcomes>
-      {outcomes.map(outcomeId => (
-        <Outcome id={outcomeId} key={outcomeId} />
-      ))}
+      <StyledTable>
+        <TableHead>
+          <TableRow>
+            <TableHeader>Outcome</TableHeader>
+            <TableHeader>Odds</TableHeader>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {outcomes.map(outcomeId => (
+            <Outcome id={outcomeId} key={outcomeId} />
+          ))}
+        </TableBody>
+      </StyledTable>
     </StyledOutcomes>
   );
 };
