@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import userEvent from '@testing-library/user-event';
 import WebSocketMock from 'jest-websocket-mock';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
@@ -8,7 +7,6 @@ import Event from '../Event';
 import { SocketProvider } from '../../../../context/SocketContext';
 import { StoreProvider } from '../../../../context/StoreContext';
 import { eventMock } from '../../../../mocks/socketDataMock';
-import { ServerStyleSheet } from 'styled-components';
 import { showFriendlyTime } from '../../../../helpers/dateTimeHelper';
 
 describe('Event', () => {
