@@ -26,7 +26,6 @@ export const handleOnMessage = (message, dispatch) => {
   }
 
   if (socketData.type === ResponseTypes.EVENT_DATA) {
-    console.log(socketData);
     dispatch({ type: Actions.EVENT_DATA, payload: { ...socketData } });
   }
 };
