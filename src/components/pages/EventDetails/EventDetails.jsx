@@ -44,7 +44,7 @@ const EventDetails = () => {
         <Container>
           <Accordion>
             {selectedEvent.data.markets.map(market => (
-              <AccordionItem text={[markets[market] && selectedEvent.data.eventId === markets[market].eventId && markets[market].name]} key={market}>
+              <AccordionItem textValues={[markets[market] && selectedEvent.data.eventId === markets[market].eventId && markets[market].name]} key={market}>
                 {markets[market] && <Outcomes outcomes={markets[market].outcomes} />}
               </AccordionItem>
             ))}

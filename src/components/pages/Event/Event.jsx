@@ -27,7 +27,7 @@ const Event = () => {
             {events.data.map(event => (
               <AccordionItem
                 item={event}
-                text={[showFriendlyTime(event.startTime), event.name]}
+                textValues={[showFriendlyTime(event.startTime), event.name]}
                 to={`${pathname}/event/${event.eventId}`}
                 key={event.eventId}
                 isLink

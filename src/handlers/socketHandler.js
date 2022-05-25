@@ -3,6 +3,7 @@ import { ResponseTypes } from '../static/types';
 
 export const handleOnMessage = (message, dispatch) => {
   const socketData = JSON.parse(message.data);
+
   if (socketData.type === ResponseTypes.LIVE_EVENTS_DATA) {
     dispatch({ type: Actions.LIVE_EVENTS_DATA, payload: { ...socketData } });
   }

@@ -4,7 +4,6 @@ import { Label, StyledToggleSwitch, ToggleSwitchInput, ToggleSwitchSlider, Wrapp
 
 const ToggleSwitch = ({ onChange, onLabel, offLabel }) => {
   const [checked, setChecked] = useState(false);
-
   const { state } = useContext(StoreContext);
   const { isDecimalOdds } = state;
 

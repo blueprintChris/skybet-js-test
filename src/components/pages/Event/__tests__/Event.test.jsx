@@ -1,17 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import WebSocketMock from 'jest-websocket-mock';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import Event from '../Event';
 import { SocketProvider } from '../../../../context/SocketContext';
 import { StoreProvider } from '../../../../context/StoreContext';
-import { eventMock } from '../../../../mocks/socketDataMock';
+import Event from '../Event';
 import { showFriendlyTime } from '../../../../helpers/dateTimeHelper';
+import { eventMock } from '../../../../mocks/socketDataMock';
 
 describe('Event', () => {
+  let webSocket;
   const URL = 'ws://localhost:8889';
-  const webSocket = new WebSocketMock(URL);
   const history = createMemoryHistory({ initialEntries: ['/football'] });
 
   const renderAppWithProviders = () => {
@@ -26,6 +25,14 @@ describe('Event', () => {
     );
   };
 
+  beforeEach(() => {
+    webSocket = new WebSocketMock(URL);
+  });
+
+  afterEach(() => {
+    WebSocketMock.clean();
+  });
+
   it('should render without crashing', () => {
     renderAppWithProviders();
   });
@@ -37,21 +44,20 @@ describe('Event', () => {
   });
 
   it('should show names and times of live football events', async () => {
-    renderAppWithProviders();
+    renderAppWithProviders(webSocket);
 
-    act(() => {
-      expect(webSocket).toReceiveMessage(
-        JSON.stringify({
-          type: 'getLiveEvents',
-          primaryMarkets: true,
-        })
-      );
-    });
+    await webSocket.connected;
 
-    webSocket.send(eventMock);
-    await screen.findByText(eventMock.name);
-    await screen.findByText(showFriendlyTime(eventMock.startTime));
+    await expect(webSocket).toReceiveMessage(
+      JSON.stringify({
+        type: 'getLiveEvents',
+        primaryMarkets: true,
+      })
+    );
 
-    WebSocketMock.clean();
+    webSocket.send(JSON.stringify(eventMock));
+
+    await screen.findByText(eventMock.data[0].name);
+    await screen.findByText(showFriendlyTime(eventMock.data[0].startTime));
   });
 });

@@ -4,13 +4,13 @@ import userEvent from '@testing-library/user-event';
 import WebSocketMock from 'jest-websocket-mock';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import App from '../App';
 import { SocketProvider } from '../../../context/SocketContext';
 import { StoreProvider } from '../../../context/StoreContext';
+import App from '../App';
 
 describe('App', () => {
+  let webSocket;
   const URL = 'ws://localhost:8889';
-  const webSocket = new WebSocketMock(URL);
   const history = createMemoryHistory();
 
   const renderAppWithProviders = () => {
@@ -24,6 +24,14 @@ describe('App', () => {
       </SocketProvider>
     );
   };
+
+  beforeEach(() => {
+    webSocket = new WebSocketMock(URL);
+  });
+
+  afterEach(() => {
+    WebSocketMock.clean();
+  });
 
   it('should render app without crashing', () => {
     renderAppWithProviders();
@@ -64,13 +72,15 @@ describe('App', () => {
     expect(history.location.pathname).toBe('/football');
   });
 
-  it('should make getLiveEvents call to WebSocket on navigation to /football', () => {
+  it('should make getLiveEvents call to WebSocket on navigation to /football', async () => {
     renderAppWithProviders();
 
     const footballLink = screen.getByRole('link', { name: 'Football' });
     userEvent.click(footballLink);
 
-    act(async () => {
+    await webSocket.connected;
+
+    await act(async () => {
       await expect(webSocket).toReceiveMessage(
         JSON.stringify({
           type: 'getLiveEvents',

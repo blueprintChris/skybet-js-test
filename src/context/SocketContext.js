@@ -21,5 +21,5 @@ export const SocketProvider = ({ children }) => {
     };
   }, [webSocket]);
 
-  return <SocketContext.Provider value={ws}>{children}</SocketContext.Provider>;
+  return <SocketContext.Provider value={webSocket}>{children}</SocketContext.Provider>;
 };
