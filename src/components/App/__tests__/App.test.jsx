@@ -7,6 +7,7 @@ import { Router } from 'react-router-dom';
 import { SocketProvider } from '../../../context/SocketContext';
 import { StoreProvider } from '../../../context/StoreContext';
 import App from '../App';
+import { eventMock, marketMock, outcomeMock } from '../../../mocks/socketDataMock';
 
 describe('App', () => {
   let webSocket;
@@ -59,8 +60,6 @@ describe('App', () => {
     screen.getByRole('img', { src: '/images/sky-bet-logo-svg.svg' });
   });
 
-  it('should change odds type when clicking toggle switch', () => {});
-
   it('should navigate to show /football on click of football navlink', () => {
     renderAppWithProviders();
 
@@ -72,13 +71,13 @@ describe('App', () => {
     expect(history.location.pathname).toBe('/football');
   });
 
-  it('should make getLiveEvents call to WebSocket on navigation to /football', async () => {
+  it('should navigate to /football, fetch event data and change odds type on toggle', async () => {
     renderAppWithProviders();
+
+    await webSocket.connected;
 
     const footballLink = screen.getByRole('link', { name: 'Football' });
     userEvent.click(footballLink);
-
-    await webSocket.connected;
 
     await act(async () => {
       await expect(webSocket).toReceiveMessage(
@@ -88,5 +87,16 @@ describe('App', () => {
         })
       );
     });
+
+    webSocket.send(JSON.stringify(eventMock));
+    webSocket.send(JSON.stringify(marketMock));
+    webSocket.send(JSON.stringify(outcomeMock));
+
+    await screen.findByText('9 / 1');
+
+    const toggleSwitch = screen.getByTestId('odds-switch');
+    userEvent.click(toggleSwitch);
+
+    await screen.findByText('10.00');
   });
 });
