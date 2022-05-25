@@ -3,6 +3,7 @@ export const ResponseTypes = {
   MARKET_DATA: 'MARKET_DATA',
   OUTCOME_DATA: 'OUTCOME_DATA',
   EVENT_DATA: 'EVENT_DATA',
+  ERROR: 'ERROR',
 };
 
 export const MessageTypes = {

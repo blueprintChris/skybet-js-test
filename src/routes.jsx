@@ -1,5 +1,5 @@
 import { Routes as Switch, Route } from 'react-router-dom';
-import { Event, EventDetails, Home } from './components';
+import { Error, Event, EventDetails, Home } from './components';
 
 // list of routes retrieved from api
 const routes = ['/football'];
@@ -12,6 +12,7 @@ const Routes = () => {
         <Route path='/:eventName' element={<Event />} key={route} />
       ))}
       <Route path='/:eventName/event/:id' element={<EventDetails />} />
+      <Route path='/error' element={<Error />} />
     </Switch>
   );
 };

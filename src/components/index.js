@@ -1,6 +1,7 @@
 export { default as Accordion } from './Accordion/Accordion';
 export { default as AccordionItem } from './Accordion/AccordionItem/AccordionItem';
 export { default as App } from './App/App';
+export { default as Error } from './pages/Error/Error';
 export { default as Event } from './pages/Event/Event';
 export { default as EventDetails } from './pages/EventDetails/EventDetails';
 export { default as Home } from './pages/Home/Home';

@@ -18,7 +18,6 @@ const ToggleSwitch = ({ onChange, onLabel, offLabel }) => {
     <Wrapper>
       <Label>{isDecimalOdds ? onLabel : offLabel}</Label>
       <StyledToggleSwitch>
-        yes
         <ToggleSwitchInput type='checkbox' onChange={handleChange} data-testid='odds-switch' />
         <ToggleSwitchSlider isChecked={checked} />
       </StyledToggleSwitch>

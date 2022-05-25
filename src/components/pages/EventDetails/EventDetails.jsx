@@ -4,7 +4,7 @@ import { StoreContext } from '../../../context/StoreContext';
 import { showFriendlyTime } from '../../../helpers/dateTimeHelper';
 import { useWebSocket } from '../../../hooks';
 import { MessageTypes } from '../../../static/types';
-import { Accordion, AccordionItem, Outcomes } from '../..';
+import { Accordion, AccordionItem, Error, Outcomes } from '../..';
 import { Container } from '../Event/styles';
 import { StyledEventDetails, EventHeader, EventType } from './styles';
 
@@ -12,7 +12,7 @@ const EventDetails = () => {
   const { id } = useParams();
   const { socketSend } = useWebSocket();
   const { state } = useContext(StoreContext);
-  const { selectedEvent, markets } = state;
+  const { selectedEvent, markets, error } = state;
 
   useEffect(() => {
     socketSend({ type: MessageTypes.GET_EVENT, id: Number(id) });
@@ -25,6 +25,10 @@ const EventDetails = () => {
       });
     }
   }, [selectedEvent.data, socketSend]);
+
+  if (error) {
+    return <Error>Sorry, an error occurred when fetching data. Please refresh the page.</Error>;
+  }
 
   return (
     selectedEvent.data && (

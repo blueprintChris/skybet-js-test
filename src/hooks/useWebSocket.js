@@ -16,7 +16,10 @@ const useWebSocket = () => {
   }, [onMessage, socket]);
 
   useEffect(() => {
-    socket.onerror = err => dispatch({ type: Actions.ERROR, err });
+    socket.onerror = err => {
+      console.log(err);
+      dispatch({ type: Actions.ERROR, err });
+    };
   }, [dispatch, socket]);
 
   return { socket, socketSend };

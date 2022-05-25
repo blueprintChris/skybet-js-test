@@ -5,7 +5,7 @@ const initialState = {
   },
   markets: {},
   outcomes: {},
-  error: {},
+  error: null,
   isDecimalOdds: false,
 };
 

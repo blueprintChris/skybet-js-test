@@ -5,24 +5,28 @@ const reducer = (state, action) => {
     case Actions.LIVE_EVENTS_DATA:
       return {
         ...state,
+        error: null,
         events: action.payload,
       };
 
     case Actions.MARKET_DATA:
       return {
         ...state,
+        error: null,
         markets: { ...state.markets, ...action.payload },
       };
 
     case Actions.OUTCOME_DATA:
       return {
         ...state,
+        error: null,
         outcomes: { ...state.outcomes, ...action.payload },
       };
 
     case Actions.EVENT_DATA:
       return {
         ...state,
+        error: null,
         selectedEvent: action.payload,
       };
 
@@ -36,6 +40,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+
+    case Actions.CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
       };
 
     default:

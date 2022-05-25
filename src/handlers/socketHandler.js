@@ -29,6 +29,10 @@ export const handleOnMessage = (message, dispatch) => {
   if (socketData.type === ResponseTypes.EVENT_DATA) {
     dispatch({ type: Actions.EVENT_DATA, payload: { ...socketData } });
   }
+
+  if (socketData.type === ResponseTypes.ERROR) {
+    dispatch({ type: Actions.ERROR, payload: { ...socketData } });
+  }
 };
 
 export const handleSendMessage = (socket, socketSend, ...args) => {
