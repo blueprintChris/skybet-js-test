@@ -45,6 +45,10 @@ I chose to use CSS in JS in the form of `styled-components`. It is easier to han
 
 I used the standard `react-router-dom` for navigational purposes. It is effective, reliable and has plenty of documentation and community support surrounding it.
 
+### Error handling
+
+The app will push to a simple error page if an error is detected inside the `error` state value.
+
 ### Unit Testing
 
 I stuck with `jest` and `@testing-library/react` for testing purposes as they come straight out of the CRA box. Testing library was developed for testing more 'user-driven' scenarios (i.e., a user clicks a button and sees a header, instead of which props where passed where), which makes more sense when unit testing a front-end project.
