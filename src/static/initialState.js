@@ -7,6 +7,7 @@ const initialState = {
   outcomes: {},
   error: null,
   isDecimalOdds: false,
+  isLoading: false,
 };
 
 export default initialState;

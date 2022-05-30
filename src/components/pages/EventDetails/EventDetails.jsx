@@ -4,19 +4,20 @@ import { StoreContext } from '../../../context/StoreContext';
 import { showFriendlyTime } from '../../../helpers/dateTimeHelper';
 import { useWebSocket } from '../../../hooks';
 import { MessageTypes } from '../../../static/types';
-import { Accordion, AccordionItem, Error, Outcomes } from '../..';
+import { Accordion, AccordionItem, Outcomes } from '../..';
 import { Container } from '../Event/styles';
 import { StyledEventDetails, EventHeader, EventType } from './styles';
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 
 const EventDetails = () => {
   const { id } = useParams();
   const { socketSend } = useWebSocket();
-  const { state } = useContext(StoreContext);
-  const { selectedEvent, markets, error } = state;
+  const { state, dispatch } = useContext(StoreContext);
+  const { selectedEvent, markets } = state;
 
   useEffect(() => {
     socketSend({ type: MessageTypes.GET_EVENT, id: Number(id) });
-  }, [id, socketSend]);
+  }, [dispatch, id, socketSend]);
 
   useEffect(() => {
     if (selectedEvent.data) {
@@ -24,10 +25,10 @@ const EventDetails = () => {
         socketSend({ type: MessageTypes.GET_MARKET, id: market });
       });
     }
-  }, [selectedEvent.data, socketSend]);
+  }, [dispatch, selectedEvent.data, socketSend]);
 
-  if (error) {
-    return <Error>Sorry, an error occurred when fetching data. Please refresh the page.</Error>;
+  if (!selectedEvent.data) {
+    return <LoadingSpinner />;
   }
 
   return (
@@ -42,7 +43,7 @@ const EventDetails = () => {
         </EventHeader>
         <EventType>
           <span>{selectedEvent.data.typeName}</span>
-          <span>{selectedEvent.data.linkedEventTypeName || 'Friendly'}</span>
+          <span>{selectedEvent.data.linkedEventTypeName || selectedEvent.data.typeName}</span>
           <span>Started:&nbsp;{showFriendlyTime(selectedEvent.data.startTime)}</span>
         </EventType>
         <Container>

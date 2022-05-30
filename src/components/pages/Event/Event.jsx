@@ -6,6 +6,7 @@ import { Accordion, AccordionItem, Markets } from '../..';
 import { showFriendlyTime } from '../../../helpers/dateTimeHelper';
 import { MessageTypes } from '../../../static/types';
 import { Container, StyledHeader, StyledEvent } from './styles';
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 
 const Event = () => {
   const { pathname } = useLocation();
@@ -15,30 +16,38 @@ const Event = () => {
   const { events } = state;
 
   useEffect(() => {
-    socketSend({ type: MessageTypes.GET_LIVE_EVENTS, primaryMarkets: true });
+    setTimeout(() => {
+      socketSend({ type: MessageTypes.GET_LIVE_EVENTS, primaryMarkets: true });
+    }, 2000);
   }, [socketSend]);
 
+  if (!events.data) {
+    return <LoadingSpinner />;
+  }
+
   return (
-    <StyledEvent>
-      <StyledHeader>{name}</StyledHeader>
-      <Container>
-        {events.data && events.data.length > 0 && (
-          <Accordion>
-            {events.data.map(event => (
-              <AccordionItem
-                item={event}
-                textValues={[showFriendlyTime(event.startTime), event.name]}
-                to={`${pathname}/event/${event.eventId}`}
-                key={event.eventId}
-                isLink
-              >
-                <Markets markets={event.markets} />
-              </AccordionItem>
-            ))}
-          </Accordion>
-        )}
-      </Container>
-    </StyledEvent>
+    events.data && (
+      <StyledEvent>
+        <StyledHeader>{name}</StyledHeader>
+        <Container>
+          {events.data.length > 0 && (
+            <Accordion>
+              {events.data.map(event => (
+                <AccordionItem
+                  item={event}
+                  textValues={[showFriendlyTime(event.startTime), event.name]}
+                  to={`${pathname}/event/${event.eventId}`}
+                  key={event.eventId}
+                  isLink
+                >
+                  <Markets markets={event.markets} />
+                </AccordionItem>
+              ))}
+            </Accordion>
+          )}
+        </Container>
+      </StyledEvent>
+    )
   );
 };
 

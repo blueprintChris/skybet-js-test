@@ -49,7 +49,7 @@ export const eventMock = {
 };
 
 export const singleEventMock = {
-  type: 'EVENT_DATA',
+  type: ResponseTypes.EVENT_DATA,
   data: {
     eventId: 21249939,
     name: 'Shanghai Shenhua 0 v 0 Shandong Luneng Taishan',

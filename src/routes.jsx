@@ -1,5 +1,5 @@
 import { Routes as Switch, Route } from 'react-router-dom';
-import { Error, Event, EventDetails, Home } from './components';
+import { Event, Error, EventDetails, Home } from './components';
 
 // list of routes retrieved from api
 const routes = ['/football'];

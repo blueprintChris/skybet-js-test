@@ -1,4 +1,5 @@
 import Actions from '../static/actions';
+import initialState from '../static/initialState';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,6 +31,18 @@ const reducer = (state, action) => {
         selectedEvent: action.payload,
       };
 
+    case Actions.LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case Actions.LOADING_COMPLETE:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
     case Actions.TOGGLE_ODDS:
       return {
         ...state,
@@ -40,12 +53,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
+        isLoading: false,
       };
 
     case Actions.CLEAR_ERROR:
       return {
         ...state,
         error: null,
+      };
+
+    case Actions.RESET_STATE:
+      return {
+        ...initialState,
       };
 
     default:

@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { StoreContext } from '../../../context/StoreContext';
+import Actions from '../../../static/actions';
 import { Container, StyledHeader } from '../Event/styles';
 import { StyledHome } from './styles';
 
 const Home = () => {
+  const { dispatch } = useContext(StoreContext);
+
+  useEffect(() => {
+    dispatch({ type: Actions.RESET_STATE });
+  }, [dispatch]);
+
   return (
     <StyledHome>
       <StyledHeader>Home Page</StyledHeader>
