@@ -27,15 +27,15 @@ After launching the app, you will come across a simple home screen with a Naviga
 
 ### Language choice
 
-I chose to use Javascript with React as my language/library/framework with a CRA (create-react-app) boilerplate because I have the most experience with it (4 years) and I am confident it is one of the stronger Javascript libraries/frameworks; documentation is solid, community support surrounding it is massive and the framework itself is flexible and dynamic.
+I chose to use Javascript with React as my language/library/framework with a CRA (create-react-app) boilerplate as I have the most experience with it (4 years) and I am confident it is one of the stronger Javascript libraries/frameworks; documentation is solid, community support surrounding it is massive and the framework itself is flexible and dynamic.
 
 ### Concepts
 
-I decided to used functional-based React with a strong approach to hooks instead of classes. I have written custom hooks to handle the websocket/API calls as well as some other smaller functionalities. I prefer to use hooks/functions as I not only have more experience in them, but I believe they are cleaner, less confusing, strongly encouraged by the developers themselves and more effecient (as well as following JavaScript's own functional nature). State management is simpler and more effective, and the use of hooks is introduced which allows for a more direct approach to basic React concepts (state, refs, useEffect, useCallback).
+I decided to used functional-based React with hooks instead of classes. I have written custom hooks to handle the websocket/API calls as well as some other smaller functionalities. I prefer to use hooks/functions as I not only have more experience in them, but I believe they are cleaner, less confusing, more effecient (as well as following JavaScript's own functional nature) and not to mention strongly encouraged by the developers themselves. State management is simpler and more effective, and the use of hooks is introduced which allows for a more direct approach to basic React concepts (state, refs, useEffect/lifecycle, useCallback).
 
 ### State management
 
-I chose to use Context as the state management for this project, as I believe Context is fully capable of handling the data coming in without the need for a complicated, 3rd-party state managment package. Context is simple, effect and I believe can be used in most scenarios and comes packaged with React.
+I chose to use Context as the state management for this project, as I believe Context is fully capable of handling the data coming in without the need for a complicated, 3rd-party state managment package. Context is simple, effective, can be used in most scenarios and comes packaged with React.
 
 ### Styling
 
