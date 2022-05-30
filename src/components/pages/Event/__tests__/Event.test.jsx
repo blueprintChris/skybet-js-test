@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import WebSocketMock from 'jest-websocket-mock';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
