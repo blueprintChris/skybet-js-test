@@ -2,7 +2,7 @@
 
 ## Setup
 
-Ensure Docker, NodeJS (and optionally, Yarn) are all installed and running on your machine.
+Ensure Docker, NodeJS (and optionally Yarn) are all installed and running on your machine.
 
 1. Run `yarn` (or `npm install`).
 2. Run `docker-compose up -d`.
@@ -10,7 +10,7 @@ Ensure Docker, NodeJS (and optionally, Yarn) are all installed and running on yo
 
 ## Test
 
-1. Ensure the docker container (image `sbgtechtest/api:2.0.0`) is not running.
+1. Ensure the docker container (image `sbgtechtest/api:2.0.0`, ports: `8888-8890:8888-8890`) is not running.
 2. Run `yarn test`.
 
 ## Covering note
