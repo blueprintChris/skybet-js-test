@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import WebSocketMock from 'jest-websocket-mock';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
@@ -37,7 +37,7 @@ describe('Event', () => {
     renderAppWithProviders();
   });
 
-  it('should show the event name in the header', () => {
+  it('should show the event name in the header', async () => {
     renderAppWithProviders();
 
     screen.getByText('Football');

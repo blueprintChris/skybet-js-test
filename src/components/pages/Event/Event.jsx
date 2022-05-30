@@ -16,21 +16,19 @@ const Event = () => {
   const { events } = state;
 
   useEffect(() => {
-    setTimeout(() => {
-      socketSend({ type: MessageTypes.GET_LIVE_EVENTS, primaryMarkets: true });
-    }, 2000);
+    socketSend({ type: MessageTypes.GET_LIVE_EVENTS, primaryMarkets: true });
   }, [socketSend]);
 
-  if (!events.data) {
-    return <LoadingSpinner />;
-  }
+  // if (!events.data) {
+  //   return <LoadingSpinner />;
+  // }
 
   return (
-    events.data && (
-      <StyledEvent>
-        <StyledHeader>{name}</StyledHeader>
-        <Container>
-          {events.data.length > 0 && (
+    <StyledEvent>
+      <StyledHeader>{name}</StyledHeader>
+      <Container>
+        {events.data ? (
+          events.data.length > 0 && (
             <Accordion>
               {events.data.map(event => (
                 <AccordionItem
@@ -44,10 +42,12 @@ const Event = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-          )}
-        </Container>
-      </StyledEvent>
-    )
+          )
+        ) : (
+          <LoadingSpinner />
+        )}
+      </Container>
+    </StyledEvent>
   );
 };
 
